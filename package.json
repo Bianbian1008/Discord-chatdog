@@ -1,0 +1,23 @@
+{
+  "name": "discord-chatdog",
+  "version": "1.0.0",
+  "description": "It's a chat robot!!",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "npm run build && node ./dist/src/index.js",
+    "build": "tsc",
+    "dev": "tsx ./src/index.ts"
+  },
+  "author": "Bianbian1008",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.45",
+    "tsx": "^4.18.0",
+    "typescript": "^5.5.4"
+  }
+}
