@@ -1,5 +1,7 @@
 import { Client, GatewayIntentBits } from 'discord.js';
+import { picture } from './image.ts';
 import * as dotenv from 'dotenv';
+import { getRandom } from './getRandom.ts';
 
 dotenv.config();
 
@@ -34,7 +36,7 @@ client.on('messageCreate', async message => {
     if (command === 'ping') {
         message.reply('pone');
     }
-    if (command === 'time') {
+    else if (command === 'time') {
         let objectDate = new Date();
         let year = objectDate.getFullYear();
         let month = objectDate.getMonth();
@@ -43,6 +45,15 @@ client.on('messageCreate', async message => {
         let days = ['日', '一', '二', '三', '四', '五', '六'];
         message.reply(`今天是： ${year}年 ${month + 1}月 ${day}日 星期${days[getDay]}`);
     }
+    else if (command === 'pic') {
+        let random = getRandom(0, picture.length-1);
+        let result = picture[random];
+        console.log("這是random: ", random);
+        console.log("這是result: ", result);
+        message.reply(result);
+    }
+
+
 
 });
 
