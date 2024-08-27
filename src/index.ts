@@ -46,11 +46,33 @@ client.on('messageCreate', async message => {
         message.reply(`今天是： ${year}年 ${month + 1}月 ${day}日 星期${days[getDay]}`);
     }
     else if (command === 'pic') {
-        let random = getRandom(0, picture.length-1);
+        let random = getRandom(0, picture.length - 1);
         let result = picture[random];
         console.log("這是random: ", random);
-        console.log("這是result: ", result);
+        // console.log("這是result: ", result);
         message.reply(result);
+    }
+    else if (command === 'math') {
+        try {
+            // console.log(args);
+            // console.log(typeof (args));
+            // console.log(command);
+            // console.log(typeof (command));
+            let expression = args.join(' ');
+            console.log(expression);
+            let result = new Function('return ' + expression)();
+            // console.log(result);
+            message.reply(`計算結果是： ${result}`);
+        } catch (error) {
+            message.reply('數學表達式無效，請再試一次。');
+        }
+    }
+    else if (command === 'help') {
+        message.reply(
+            "-time 輸出現在時間" + "\n" +
+            "-pic 輸出貓咪圖片" + "\n" +
+            "-math + (+ - * / 數字) 輸出計算結果" + "\n"
+        );
     }
 
 
